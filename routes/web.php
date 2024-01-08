@@ -14,13 +14,10 @@ use Illuminate\Support\Facades\Route;
 | GET, POST, PUT, PATCH, DELETE, OPTIONS
 */
 
-Route::get('/', function () {
-    return 'Olá, seja bem vindo ao curso!';
-});
-Route::get('/sobre-nos', function(){
-    return 'Sobre nós';
-});
-Route::get('/contato', function(){
-    return 'Contato';
-});
+// rota, classe controladora e respectivo método/action no lugar da function de callback
+Route::get('/', 'PrincipalController@principal');
+
+Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+
+Route::get('/contato', 'ContatoController@contato');
 
