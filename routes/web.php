@@ -21,13 +21,17 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
 
-Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagen}',                  
-//Para tornar os parametro opcionais basta adicionar um ? logo após o parâmetro. Ex: /{mensagen?}'
-//Pode-se atribuir um valor defeult com = ''. Ex: string $mensagem = 'Mensagem não enviada'
-function(string $nome,
-string $categoria,
-string $assunto,
-string $mensagem){   
-    echo 'Nome: '.$nome.'<br>Categoria: '.$categoria.' <br>Assunto: '.$assunto.' <br>Mensagem: '.$mensagem;
-});
+Route::get(
+    '/contato/{nome}/{categoria_id?}',                  
+    //Para tornar os parametro opcionais basta adicionar um ? logo após o parâmetro. Ex: /{mensagen?}'
+    //Pode-se atribuir um valor defeult com = ''. Ex: string $mensagem = 'Mensagem não enviada'
+    function(
+        string $nome = 'Desconhecido',
+        int $categoria_id = 1 // 1 - 'Informação'
+    ) {   
+        echo "Nome: ". $nome. "<br>Categoria: ". $categoria_id;
+      }
+    )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+    //Epressões regulares que permitem condicionar os parâmetros
+    // + representa ao menos um caractere sendo enviado
 
