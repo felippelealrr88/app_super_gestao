@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // rota, classe controladora e respectivo método/action no lugar da function de callback
-Route::get('/', 'PrincipalController@principal');
+Route::get('/principal', 'PrincipalController@principal');
 
 Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
 
-Route::get(
+/*Route::get(
     '/contato/{nome}/{categoria_id?}',                  
     //Para tornar os parametro opcionais basta adicionar um ? logo após o parâmetro. Ex: /{mensagen?}'
     //Pode-se atribuir um valor defeult com = ''. Ex: string $mensagem = 'Mensagem não enviada'
@@ -35,3 +35,4 @@ Route::get(
     //Epressões regulares que permitem condicionar os parâmetros
     // + representa ao menos um caractere sendo enviado
 
+*/
