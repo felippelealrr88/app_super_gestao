@@ -27,6 +27,18 @@ Route::prefix('/app')->group(function(){
     Route::get('/produtos', 'ProdutosController@produtos')->name('app.produtos');
 });
 
+Route::get('/rota1', function(){
+    echo 'Rota 1';
+})->name('site.rota1');
+
+Route::get('/rota2', function(){
+    return redirect()->route('site.rota1'); //redirecionando a rota
+})->name('site.rota2');
+
+
+
+
+
 
 /*Route::get(
     '/contato/{nome}/{categoria_id?}',                  
