@@ -35,7 +35,10 @@ Route::get('/rota2', function(){
     return redirect()->route('site.rota1'); //redirecionando a rota
 })->name('site.rota2');
 
-
+//Rota de Fallback usada para redirecionar rotas inexistentas
+Route::fallback(function(){
+    echo 'Página não encontrada. Clique <a href="'.route('site.index').'">aqui</a> para voltar ao início'; 
+});
 
 
 
