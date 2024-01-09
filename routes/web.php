@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // rota, classe controladora e respectivo método/action no lugar da function de callback
-Route::get('/principal', 'PrincipalController@principal');
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
-Route::get('/contato', 'ContatoController@contato');
-Route::get('/login', 'LoginController@login');
+Route::get('/principal', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login', 'LoginController@login')->name('site.login');
 
-//Agrupamento de rotas 
+//Agrupamento de rotas (metodo name cria um alias para as rotas)
 Route::prefix('/app')->group(function(){
-    Route::get('/clientes', 'ClientesController@clientes');
-    Route::get('/fornecedores', 'FornecedoresController@fornecedores');
-    Route::get('/produtos', 'ProdutosController@produtos');
+    Route::get('/clientes', 'ClientesController@clientes')->name('app.clientes');
+    Route::get('/fornecedores', 'FornecedoresController@fornecedores')->name('app.fornecedores');
+    Route::get('/produtos', 'ProdutosController@produtos')->name('app.produtos');
 });
 
 
