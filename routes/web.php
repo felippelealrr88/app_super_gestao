@@ -21,8 +21,13 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
 
-Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagen}',
-function(string $nome, string $categoria, string $assunto, string $mensagem){
+Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagen}',                  
+//Para tornar os parametro opcionais basta adicionar um ? logo após o parâmetro. Ex: /{mensagen?}'
+//Pode-se atribuir um valor defeult com = ''. Ex: string $mensagem = 'Mensagem não enviada'
+function(string $nome,
+string $categoria,
+string $assunto,
+string $mensagem){   
     echo 'Nome: '.$nome.'<br>Categoria: '.$categoria.' <br>Assunto: '.$assunto.' <br>Mensagem: '.$mensagem;
 });
 
