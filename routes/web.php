@@ -16,10 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 // rota, classe controladora e respectivo método/action no lugar da function de callback
 Route::get('/principal', 'PrincipalController@principal');
-
 Route::get('/sobre-nos', 'SobreNosController@sobreNos');
-
 Route::get('/contato', 'ContatoController@contato');
+Route::get('/login', 'LoginController@login');
+
+//Agrupamento de rotas 
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes', 'ClientesController@clientes');
+    Route::get('/fornecedores', 'FornecedoresController@fornecedores');
+    Route::get('/produtos', 'ProdutosController@produtos');
+});
+
 
 /*Route::get(
     '/contato/{nome}/{categoria_id?}',                  
