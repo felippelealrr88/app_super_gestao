@@ -23,7 +23,7 @@ Route::get('/login', 'LoginController@login')->name('site.login');
 //Agrupamento de rotas (metodo name cria um alias para as rotas)
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', 'ClientesController@clientes')->name('app.clientes');
-    Route::get('/fornecedores', 'FornecedoresController@fornecedores')->name('app.fornecedores');
+    Route::get('/fornecedores', 'FornecedoresController@index')->name('app.fornecedores');
     Route::get('/produtos', 'ProdutosController@produtos')->name('app.produtos');
 });
 
