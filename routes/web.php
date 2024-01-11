@@ -27,10 +27,12 @@ Route::prefix('/app')->group(function(){
     Route::get('/produtos', 'ProdutosController@produtos')->name('app.produtos');
 });
 
-Route::get('/rota1', function(){
-    echo 'Rota 1';
-})->name('site.rota1');
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
 
+Route::fallback(function(){
+    echo 'Página não encontrada. Clique <a href="'.route('site.index').'">aqui</a> para voltar ao início'; 
+});
+/*
 Route::get('/rota2', function(){
     return redirect()->route('site.rota1'); //redirecionando a rota
 })->name('site.rota2');
@@ -40,10 +42,7 @@ Route::fallback(function(){
     echo 'Página não encontrada. Clique <a href="'.route('site.index').'">aqui</a> para voltar ao início'; 
 });
 
-
-
-
-/*Route::get(
+Route::get(
     '/contato/{nome}/{categoria_id?}',                  
     //Para tornar os parametro opcionais basta adicionar um ? logo após o parâmetro. Ex: /{mensagen?}'
     //Pode-se atribuir um valor defeult com = ''. Ex: string $mensagem = 'Mensagem não enviada'
