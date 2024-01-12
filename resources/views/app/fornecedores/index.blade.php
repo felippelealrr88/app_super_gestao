@@ -1,20 +1,21 @@
 <h3>Fornecedores</h3>
 
-@php
-    
-@endphp
+@isset($fornecedores[0]['nome'])
+    Fornecedor 1: {{$fornecedores[0]['nome']}}<br/>    
+@endisset
+@isset($fornecedores[0]['status'])
+    Status: {{$fornecedores[0]['status']}}<br/>
+@endisset
+@isset($fornecedores[0]['cnpj'])
+    Cnpj: {{$fornecedores[0]['cnpj']}}<br/><br/>
+@endisset        
 
-
-
-Fornecedor: {{$fornecedores[0]['nome']}}
-Status: {{$fornecedores[0]['status']}}
-<br/>
-
-@if ($fornecedores[0]['status'] == 's')
-   Fornecedor inativo 
-  
-@endif
-<br/>
-@unless ($fornecedores[0]['status'] == 'n') <!-- Executa se o retorno da condição for false (!)-->
-    Fornecedor ativo
-@endunless
+@isset($fornecedores[1]['nome'])
+    Fornecedor 1: {{$fornecedores[0]['nome']}}<br/>    
+@endisset
+@isset($fornecedores[1]['status'])
+    Status: {{$fornecedores[0]['status']}}<br/>
+@endisset
+@isset($fornecedores[1]['cnpj'])
+    Cnpj: {{$fornecedores[0]['cnpj']}}<br/><br/> 
+@endisset    
