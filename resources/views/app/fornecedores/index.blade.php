@@ -4,10 +4,17 @@
     
 @endphp
 
-@if (count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns fornecedores cadastrados</h3>
-@elseif (count($fornecedores) > 10)
-    <h3>Existem dezenas de fornecedores cadastrados</h3>
-@else
-    <h3>ainda não existem fornecedores cadastrados</h3>
-@endif    
+
+
+Fornecedor: {{$fornecedores[0]['nome']}}
+Status: {{$fornecedores[0]['status']}}
+<br/>
+
+@if ($fornecedores[0]['status'] == 's')
+   Fornecedor inativo 
+  
+@endif
+<br/>
+@unless ($fornecedores[0]['status'] == 'n') <!-- Executa se o retorno da condição for false (!)-->
+    Fornecedor ativo
+@endunless
