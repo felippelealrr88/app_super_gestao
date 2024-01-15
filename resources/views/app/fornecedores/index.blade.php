@@ -17,7 +17,7 @@
   
     @forelse($fornecedores as $indice => $fornecedores) <!-- Se houver itens a percorrer no array executa o bloco, se não desvia o bloco (empty) -->
 
-        Fornecedor: {{$fornecedores['nome'] ?? 'Sem nome' }}<br/>    
+        Fornecedor: @{{$fornecedores['nome'] ?? 'Sem nome' }}<br/><!--Escapa o interpretador BladePHP-->    
         Status: {{$fornecedores['status'] ?? 'Indefinido' }}<br/>
         CNPJ: {{ $fornecedores['cnpj'] ?? 'Dados não preenchidos' }}<br/>
         ddd: {{$fornecedores['ddd'] ?? '00' }}<br/>
