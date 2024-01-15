@@ -14,18 +14,16 @@
 @endphp
 
 @isset($fornecedores)
-    @php
-        $i =0;    
-    @endphp
-    @while (isset($fornecedores[$i])) <!-- Percorre o array até a posição não setada (3)-->
+  
+    @forelse($fornecedores as $indice => $fornecedores) <!-- Se houver itens a percorrer no array executa o bloco, se não desvia o bloco (empty) -->
 
-        Fornecedor {{$i}}: {{$fornecedores[$i]['nome'] ?? 'Sem nome' }}<br/>    
-        Status: {{$fornecedores[$i]['status'] ?? 'Indefinido' }}<br/>
-        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
-        ddd: {{$fornecedores[$i]['ddd'] ?? '00' }}<br/>
-        Telefone: {{$fornecedores[$i]['telefone'] ?? '00000-0000' }}<br/>
+        Fornecedor: {{$fornecedores['nome'] ?? 'Sem nome' }}<br/>    
+        Status: {{$fornecedores['status'] ?? 'Indefinido' }}<br/>
+        CNPJ: {{ $fornecedores['cnpj'] ?? 'Dados não preenchidos' }}<br/>
+        ddd: {{$fornecedores['ddd'] ?? '00' }}<br/>
+        Telefone: {{$fornecedores['telefone'] ?? '00000-0000' }}<br/>
 
-            @switch($fornecedores[$i]['ddd'])
+            @switch($fornecedores['ddd'])
                 @case('11')
                 São Paulo - SP
                 @break
@@ -42,10 +40,9 @@
                 Estado não informado
             
             @endswitch <hr/> 
-    @php
-        $i++;
-    @endphp        
-    @endwhile
+    @empty
+        Não Existem fornecedores cadastrados.  
+    @endforelse
     
 
 
