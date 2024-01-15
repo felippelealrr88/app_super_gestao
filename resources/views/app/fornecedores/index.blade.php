@@ -14,10 +14,15 @@
 @endphp
 
 @isset($fornecedores)
-  
+  <!--Objeto loop dentro do Foreach e Forealse
+    Podemos iterar sobre o objeto e etc
+
+  -->
+    
     @forelse($fornecedores as $indice => $fornecedores) <!-- Se houver itens a percorrer no array executa o bloco, se não desvia o bloco (empty) -->
 
-        Fornecedor: @{{$fornecedores['nome'] ?? 'Sem nome' }}<br/><!--Escapa o interpretador BladePHP-->    
+    
+        Fornecedor {{$loop->iteration}}: {{$fornecedores['nome'] ?? 'Sem nome' }}<br/><!--itera sobre o $loop-->    
         Status: {{$fornecedores['status'] ?? 'Indefinido' }}<br/>
         CNPJ: {{ $fornecedores['cnpj'] ?? 'Dados não preenchidos' }}<br/>
         ddd: {{$fornecedores['ddd'] ?? '00' }}<br/>
@@ -39,7 +44,15 @@
                 @default
                 Estado não informado
             
-            @endswitch <hr/> 
+            @endswitch <br/>
+               @if ($loop->first)
+                PRIMEIRA iteração do loop
+            @endif
+            @if ($loop->last)
+                ÚLTIMA iteração do loop <br/><br/>
+                Total de Registros: {{$loop->count}}
+            @endif
+            <hr/> 
     @empty
         Não Existem fornecedores cadastrados.  
     @endforelse
