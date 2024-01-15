@@ -1,4 +1,4 @@
-<h3>Fornecedores</h3>
+<h3>Fornecedores</h3><hr/>
 
 @php
     /*if(empty(@variavel)){} retorna true se a variável estiver vazia
@@ -15,73 +15,34 @@
 
 @isset($fornecedores)
     
-    Fornecedor 1: {{$fornecedores[0]['nome'] ?? 'Sem nome' }}<br/>    
-    Status: {{$fornecedores[0]['status'] ?? 'Indefinido' }}<br/>
-    CNPJ: {{ $fornecedores[0]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
-    ddd: {{$fornecedores[0]['ddd'] ?? '00' }}<br/>
-    Telefone: {{$fornecedores[0]['telefone'] ?? '00000-0000' }}<br/>
-    @switch($fornecedores[0]['ddd'])
-        @case('11')
-            São Paulo - SP
-        @break
-        @case('98')
-            São Luiz - MA
-        @break
+    @for ($i = 0; isset($fornecedores[$i]); $i++) <!-- Percorre o array até a posição não setada (3)-->
+        Fornecedor {{$i}}: {{$fornecedores[$i]['nome'] ?? 'Sem nome' }}<br/>    
+        Status: {{$fornecedores[$i]['status'] ?? 'Indefinido' }}<br/>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
+        ddd: {{$fornecedores[$i]['ddd'] ?? '00' }}<br/>
+        Telefone: {{$fornecedores[$i]['telefone'] ?? '00000-0000' }}<br/>
 
-        @case('95')
-            Boa Vista - RR
-        @break    
-        @default
-        Estado não informado
+            @switch($fornecedores[$i]['ddd'])
+                @case('11')
+                São Paulo - SP
+                @break
+
+                @case('98')
+                São Luiz - MA
+                @break
+
+                @case('95')
+                Boa Vista - RR
+                @break    
+
+                @default
+                Estado não informado
             
-    @endswitch <br/><br/>
-
-
-    Fornecedor 2: {{$fornecedores[1]['nome'] ?? 'Sem nome' }}<br/>    
-    Status: {{$fornecedores[1]['status'] ?? 'Indefinido' }}<br/>
-    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
-    ddd: {{$fornecedores[1]['ddd'] ?? '00' }}<br/>
-    Telefone: {{$fornecedores[1]['telefone'] ?? '00000-0000' }}<br/>
-    @switch($fornecedores[1]['ddd'])
-        @case('11')
-            São Paulo - SP
-        @break
-        @case('98')
-            São Luiz - MA
-        @break
-
-        @case('95')
-            Boa Vista - RR
-        @break    
-        @default
-        Estado não informado
-            
-    @endswitch <br/><br/>
-
-
-    Fornecedor 3: {{$fornecedores[2]['nome'] ?? 'Sem nome' }}<br/>    
-    Status: {{$fornecedores[2]['status'] ?? 'Indefinido' }}<br/>
-    CNPJ: {{ $fornecedores[2]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
-    ddd: {{$fornecedores[2]['ddd'] ?? '00' }}<br/>
-    Telefone: {{$fornecedores[2]['telefone'] ?? '00000-0000' }}<br/>
+            @endswitch <hr/> 
+    @endfor
     
-    @switch($fornecedores[2]['ddd'])
-        @case('11')
-            São Paulo - SP
-        @break
-        @case('98')
-            São Luiz - MA
-        @break
 
-        @case('95')
-            Boa Vista - RR
-        @break    
-        @default
-            Estado não informado
-            
-    @endswitch
-    
-    <br/><br/>
+
 
     <!-- VALOR DEFAULT (??)
     Se a variável testada não estiver definida 
