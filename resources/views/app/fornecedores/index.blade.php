@@ -14,8 +14,11 @@
 @endphp
 
 @isset($fornecedores)
-    
-    @for ($i = 0; isset($fornecedores[$i]); $i++) <!-- Percorre o array até a posição não setada (3)-->
+    @php
+        $i =0;    
+    @endphp
+    @while (isset($fornecedores[$i])) <!-- Percorre o array até a posição não setada (3)-->
+
         Fornecedor {{$i}}: {{$fornecedores[$i]['nome'] ?? 'Sem nome' }}<br/>    
         Status: {{$fornecedores[$i]['status'] ?? 'Indefinido' }}<br/>
         CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dados não preenchidos' }}<br/>
@@ -39,7 +42,10 @@
                 Estado não informado
             
             @endswitch <hr/> 
-    @endfor
+    @php
+        $i++;
+    @endphp        
+    @endwhile
     
 
 
