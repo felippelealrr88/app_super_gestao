@@ -67,7 +67,7 @@ button:hover {
 .topo {
     width: 100%;
     background-color: #f8f8f8;
-    position: absolute;
+    position: fixed;
     padding: 20px 0px 10px 0px;
 }
 
@@ -129,7 +129,7 @@ button:hover {
 }
 
 .contato-principal {
-    margin: 0px 60px 60px 40px;
+    margin: 100px 600px 60px 600px;
 }
 
 .chamada {
