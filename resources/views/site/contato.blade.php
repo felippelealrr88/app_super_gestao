@@ -10,8 +10,8 @@
 
             <div class="informacao-pagina">
                 <div class="contato-principal">
-                    @component('site.layouts._components.form_contato')
-                        
+                    @component('site.layouts._components.form_contato', ['classe'=>'borda-preta']) <!-- Enviando parametros para o componente usado aqui nessa view-->
+                        <p>Nossa Equipe entrará em contato em até 48h</p>
                     @endcomponent    
                 </div>
             </div>  
