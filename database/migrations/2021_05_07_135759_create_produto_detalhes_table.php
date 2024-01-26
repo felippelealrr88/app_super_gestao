@@ -14,22 +14,17 @@ class CreateProdutoDetalhesTable extends Migration
     public function up()
     {
         Schema::create('produto_detalhes', function (Blueprint $table) {
+            //colunas
             $table->id();
+            $table->unsignedBigInteger('produto_id');
             $table->float('comprimento', 8, 2);
             $table->float('largura', 8, 2);
             $table->float('altura', 8, 2);
-            $table->unsignedBigInteger('produto_id'); //chave estrangeira de produtos
             $table->timestamps();
 
-            //constraint que vai fazer a ligação das chaves
+            //constraint
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->unique('produto_id');
-            
-            //Metodo foreign() passa a FK
-            //Metodo references passa a PK
-            //Metodo on() especifica a tabela
-            //Unique() garante o relacionamento um pra um, garantindo que em produto_id não tenha valores repetidos,
-            //ou seja, cada produto tem um detalhe e cada detalhe um produto
         });
     }
 

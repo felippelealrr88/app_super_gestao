@@ -11,12 +11,12 @@ class AlterFornecedoresNovasColunas extends Migration
      *
      * @return void
      */
-    public function up() //Metodo que execura a migração
+    public function up()
     {
-        //Atualiza uma tabela já existente no banco
+        //
         Schema::table('fornecedores', function (Blueprint $table) {
             $table->string('uf', 2);
-            $table->string('email', 150);    
+            $table->string('email', 150);
         });
     }
 
@@ -27,10 +27,11 @@ class AlterFornecedoresNovasColunas extends Migration
      */
     public function down()
     {
-        //Desfaz a ultima atualização da migration desde que configurada
         Schema::table('fornecedores', function (Blueprint $table) {
             //para remover colunas
-            $table->dropColumn('uf', 'email');    
+            // $table->dropColumn('uf');
+            // $table->dropColumn('email');
+            $table->dropColumn(['uf', 'email']);
         });
     }
 }
