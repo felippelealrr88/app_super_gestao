@@ -15,4 +15,6 @@ class SiteContato extends Model
     3 - site_contatos ->conversão em plural (s)
     
     */
+
+    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contato', 'mensagem']; //permissão para poder inserir no Objeto com Tinker
 }
