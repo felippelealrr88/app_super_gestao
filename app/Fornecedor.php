@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fornecedor extends Model
 {
-    //Atributo que sobrepõe a nomeação automática do Laravel
+    //Atributo que sobrepõe a nomeação automática do Laravel no banco
     protected $table = 'fornecedores';
+    //Permissão para inserir dados usando Tinker
+    protected $fillable = ['nome', 'site', 'uf', 'email'];
 }
