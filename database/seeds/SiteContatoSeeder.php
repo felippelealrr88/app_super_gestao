@@ -1,6 +1,7 @@
 <?php
 
 use App\SiteContato;
+use Illuminate\Database\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,7 @@ class SiteContatoSeeder extends Seeder
      */
     public function run()
     {
+        /*
         //Instanciando o Objeto
         $contato = new SiteContato();
         $contato->nome = 'Felippe';
@@ -31,6 +33,9 @@ class SiteContatoSeeder extends Seeder
             'mensagem'=>'Não consigo alterar minha senha!'
 
         ]);
+        */
+        //Usando a factory dentro da classe seed
+        factory(SiteContatoFactory::class, 100)->create();
 
         
 
