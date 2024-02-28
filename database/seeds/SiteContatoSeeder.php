@@ -35,7 +35,7 @@ class SiteContatoSeeder extends Seeder
         ]);
         */
         //Usando a factory dentro da classe seed
-        factory(SiteContatoFactory::class, 100)->create();
+        factory(SiteContato::class, 100)->create();
 
         
 
