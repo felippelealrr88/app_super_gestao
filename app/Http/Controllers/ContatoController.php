@@ -50,11 +50,12 @@ class ContatoController extends Controller
             'telefone'=>'required',
             'email'=>'required',
             'motivo_contato'=>'required',
-            'mensagem'=> 'required|min:10|max:20'
+            'mensagem'=> 'required|min:10|max:250'
         ]);
 
         //Instanciando o Objeto e SAlvando
         $contato = new SiteContato();
         $contato->create($request->all());
+        echo('Formulário enviado com sucesso!');
     }
 }
