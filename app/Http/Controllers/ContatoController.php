@@ -38,8 +38,16 @@ class ContatoController extends Controller
         echo ('Formulário enviado!');
         */
 
+        $motivos_contato = [
+            '1' => 'Dúvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação',
+            '4' => 'Sugestão',
+            '5' => 'Outros'
 
-        return view('site.contato');
+        ];
+        //Retorna para a view o array
+        return view('site.contato', ['motivos_contato' => $motivos_contato]);
     }
 
     public function salvar(Request $request){
