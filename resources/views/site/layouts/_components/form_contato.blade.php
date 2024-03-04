@@ -22,7 +22,7 @@
 
         </select>
         <br>
-        <textarea name="mensagem" class="{{$classe}}" placeholder="Digite sua mensagem">@if (old('mensagem') != ''){{ old('mensagem') }}@else Digite sua mensagem. @endif</textarea>
+        <textarea name="mensagem" required class="{{$classe}}" placeholder="Digite sua mensagem">@if (old('mensagem') != ''){{ old('mensagem') }}@else Digite sua mensagem. @endif</textarea>
         <br>
         <button type="submit" class="{{$classe}}">Enviar</button>
                             
