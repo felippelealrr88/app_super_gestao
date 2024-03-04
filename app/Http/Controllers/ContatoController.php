@@ -28,7 +28,7 @@ class ContatoController extends Controller
         $contato2->fill($request->all());
         //print_r($contato2->getAttributes());
         $contato2->save();
-        */
+        
 
 
         $contato3 = new SiteContato();
@@ -36,8 +36,25 @@ class ContatoController extends Controller
         //com o retorno do formulário
         $contato3->create($request->all());
         echo ('Formulário enviado!');
+        */
 
 
         return view('site.contato');
+    }
+
+    public function salvar(Request $request){
+       
+        //Validação dos dados do formulário
+        $request->validate([
+            'nome' =>'required',
+            'telefone'=>'required',
+            'email'=>'required',
+            'motivo_contato'=>'required',
+            'mensagem'=> 'required|min:10|max:20'
+        ]);
+
+        //Instanciando o Objeto e SAlvando
+        $contato = new SiteContato();
+        $contato->create($request->all());
     }
 }
