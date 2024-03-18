@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\MotivoContato;
 
 use Illuminate\Http\Request;
 
@@ -8,15 +9,8 @@ class PrincipalController extends Controller
 {
     public function principal(){
 
-        //simulando a recuperação dos dados do banco com um array
-        $motivos_contato = [
-            '1' => 'Dúvida',
-            '2' => 'Elogio',
-            '3' => 'Reclamação',
-            '4' => 'Sugestão',
-            '5' => 'Outros'
-
-        ];
+        //Recuperando dados do banco pela Model MotivoContato
+        $motivos_contato = MotivoContato::all();
 
         return view('site.principal', ['motivos_contato' => $motivos_contato]);
     }

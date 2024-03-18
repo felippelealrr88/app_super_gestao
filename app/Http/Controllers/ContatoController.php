@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MotivoContato;
 use App\SiteContato;
 use Illuminate\Http\Request;
 
@@ -38,15 +39,8 @@ class ContatoController extends Controller
         echo ('Formulário enviado!');
         */
 
-        //simulando a recuperação dos dados do banco com um array
-        $motivos_contato = [
-            '1' => 'Dúvida',
-            '2' => 'Elogio',
-            '3' => 'Reclamação',
-            '4' => 'Sugestão',
-            '5' => 'Outros'
-
-        ];
+        //Recuperando dados do banco pela Model MotivoContato
+        $motivos_contato = MotivoContato::all();
         
         //Retorna para a view o array
         return view('site.contato', ['motivos_contato' => $motivos_contato]);
