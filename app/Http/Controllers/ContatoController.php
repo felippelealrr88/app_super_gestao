@@ -53,13 +53,13 @@ class ContatoController extends Controller
             'nome' =>'required',
             'telefone'=>'required',
             'email'=>'email',//validando email
-            'motivo_contato'=>'required',
+            'motivo_contatos_id'=>'required',
             'mensagem'=> 'required|min:10|max:250'
         ]);
 
         //Instanciando o Objeto e SAlvando
         $contato = new SiteContato();
         $contato->create($request->all());
-        echo('Formulário enviado com sucesso!');
+        return redirect()->route('site.index');
     }
 }

@@ -16,5 +16,5 @@ class SiteContato extends Model
     
     */
 
-    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contato', 'mensagem']; //permissão para poder inserir no Objeto com Tinker
+    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contatos_id', 'mensagem']; //permissão para poder inserir no Objeto com Tinker
 }
