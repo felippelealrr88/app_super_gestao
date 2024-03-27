@@ -24,8 +24,8 @@ class LogAcessoMiddleware
 
         
 
-
+        return $next($request);
         return Response('Chegamos ao middleware');
-        //return $next($request);
+        
     }
 }
