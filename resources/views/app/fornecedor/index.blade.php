@@ -1,19 +1,10 @@
-<h3>Fornecedores</h3><hr/>
+@extends('app.layouts._partials.basico')
 
-@php
-    /*if(empty(@variavel)){} retorna true se a variável estiver vazia
-    - ''
-    - 0
-    - 0.0
-    - '0'
-    - null
-    - false
-    - array()
-    - $var
-    */
-@endphp
+@section('titulo', 'Fornecedor')
 
-@isset($fornecedores)
+@section('conteudo')
+    <br><br><br><br><br><br>
+    @isset($fornecedores)
   <!--Objeto loop dentro do Foreach e Forealse
     Podemos iterar sobre o objeto e etc
 
@@ -67,5 +58,8 @@
     -->
     
 @endisset
+@endsection
+
+
 
   

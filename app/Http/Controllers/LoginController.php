@@ -7,7 +7,7 @@ use App\User;
 
 class LoginController extends Controller
 {
-
+    //Exibe a página de login
     public function login(Request $request){
         //Recebe o erro encaminhado ao não encontrar login e senha correspondente no banco
         $erro = '';
@@ -24,6 +24,7 @@ class LoginController extends Controller
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
 
+    //Realizaa autenticação
     public function autenticar(Request $request){
         //Validação básica
         $regras = [
@@ -60,7 +61,7 @@ class LoginController extends Controller
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
             
-            return redirect()->route('app.cliente');
+            return redirect()->route('app.home');
 
         }else
             //redireciona para a rota passando o erro
@@ -69,6 +70,7 @@ class LoginController extends Controller
 
     public function sair(){
         session_destroy();
-        return view('app.sair');
+        //Retorna a variável título dinâmica usada na página
+        return view('site.login', ['titulo' => 'Login']);
     }
 }
