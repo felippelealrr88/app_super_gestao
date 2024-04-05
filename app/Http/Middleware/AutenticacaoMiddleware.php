@@ -10,11 +10,14 @@ class AutenticacaoMiddleware
     
     public function handle($request, Closure $next)
     {
-        if(false){
+        session_start();
+
+        //Verifica se a sessão está setada e difere de vazio
+        if (isset( $_SESSION['email']) && $_SESSION['email'] != '') {
+            //Vai para a próxima requisição
             return $next($request);
-        }else{
-            return Response(' Acesso negado! Faça Login para acessar o sitema! ');
-        }
+        }else
+            return redirect()->route('site.login', ['erro' => 2]);
         
         
     }

@@ -22,15 +22,18 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 
-Route::get('/login', 'LoginController@login')->name('site.login');
+Route::get('/login/{erro?}', 'LoginController@login')->name('site.login');
+Route::post('/login', 'LoginController@autenticar')->name('site.login');
 
 //Agrupamento de rotas app
 //Encadeamento de Middlewares pelo apelido
 Route::middleware('log.acesso', 'autenticacao')
     ->prefix('/app')->group(function(){
-    Route::get('/clientes', 'ClientesController@clientes')->name('app.clientes');
-    Route::get('/fornecedores', 'FornecedoresController@index')->name('app.fornecedores');
-    Route::get('/produtos', 'ProdutosController@produtos')->name('app.produtos');
+    Route::get('/home', 'HomeController@index')->name('app.home');
+    Route::get('/sair', 'LoginController@sair')->name('app.sair');
+    Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
+    Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
+    Route::get('/produto', 'ProdutosController@index')->name('app.produto');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
