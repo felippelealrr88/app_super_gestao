@@ -29,8 +29,9 @@ class FornecedoresController extends Controller
 
         $msg = '';
 
-        //Validação do token
-        if($request->input('_token') != '') {
+        //INCLUSÃO
+        //Verifica se o token está definido e o id vazio
+        if($request->input('_token') != '' && $request->input('id') == '') {
             //Se o token é válido
             $regras = [
                 'nome' => 'required|min:3|max:40',
@@ -62,6 +63,33 @@ class FornecedoresController extends Controller
             //dados view
             $msg = 'Cadastro realizado com sucesso';
         }
-        return view('app.fornecedor.adicionar', ['msg' => $msg]);
+
+        //EDIÇÃO
+        //Verifica se o token está definido e o id vazio
+        if($request->input('_token') != '' && $request->input('id') != ''){
+           
+            //Realiza a pesquisa do Objeto Fornecedor
+            $fornecedor = Fornecedor::find($request->input('id')); 
+
+            //Realiza a edição
+            $update = $fornecedor->update($request->all());
+
+            if($update){
+                $msg = 'Update realizado com sucesso!';
+            }else {
+                $msg = 'Não foi possível atualizar!';
+            }    
+
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id'), 'msg' => $msg]);
+        }
+
+    }
+
+    public function editar($id, $msg = ''){
+        //Pesquisa o fornecedor no banco pelo id recebido
+        $fornecedor = Fornecedor::find($id);
+        
+
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg'=>$msg]);
     }
 }
