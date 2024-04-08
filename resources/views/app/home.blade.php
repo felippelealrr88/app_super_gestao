@@ -1,4 +1,4 @@
-@extends('app.layouts._partials.basico')
+@extends('app.layouts.basico')
 
 @section('titulo', 'Home')
 
