@@ -32,8 +32,15 @@ Route::middleware('log.acesso', 'autenticacao')
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/sair', 'LoginController@sair')->name('app.sair');
     Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
-    Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
     Route::get('/produto', 'ProdutosController@index')->name('app.produto');
+
+    //Fornecedores
+Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
+Route::post('/fornecedor/listar', 'FornecedoresController@listar')->name('app.fornecedor.listar');
+Route::get('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
+Route::post('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
+
+
 });
 
 

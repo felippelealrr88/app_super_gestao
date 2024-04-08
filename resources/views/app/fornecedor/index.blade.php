@@ -1,65 +1,35 @@
-@extends('app.layouts._partials.basico')
+@extends('app.layouts.basico')
 
 @section('titulo', 'Fornecedor')
 
 @section('conteudo')
-    <br><br><br><br><br><br>
-    @isset($fornecedores)
-  <!--Objeto loop dentro do Foreach e Forealse
-    Podemos iterar sobre o objeto e etc
 
-  -->
-    
-    @forelse($fornecedores as $indice => $fornecedores) <!-- Se houver itens a percorrer no array executa o bloco, se não desvia o bloco (empty) -->
+    <div class="conteudo-pagina">
 
-    
-        Fornecedor {{$loop->iteration}}: {{$fornecedores['nome'] ?? 'Sem nome' }}<br/><!--itera sobre o $loop-->    
-        Status: {{$fornecedores['status'] ?? 'Indefinido' }}<br/>
-        CNPJ: {{ $fornecedores['cnpj'] ?? 'Dados não preenchidos' }}<br/>
-        ddd: {{$fornecedores['ddd'] ?? '00' }}<br/>
-        Telefone: {{$fornecedores['telefone'] ?? '00000-0000' }}<br/>
+        <div class="titulo-pagina-2">
+            <p>Fornecedor</p>
+        </div>
 
-            @switch($fornecedores['ddd'])
-                @case('11')
-                São Paulo - SP
-                @break
+        <div class="menu">
+            <ul>
+                <li><a href="{{ route('app.fornecedor.adicionar') }}">Novo</a></li>
+                <li><a href="{{ route('app.fornecedor') }}">Consulta</a></li>
+            </ul>
+        </div>
 
-                @case('98')
-                São Luiz - MA
-                @break
+        <div class="informacao-pagina">
+            <div style="width: 30%; margin-left: auto; margin-right: auto;">
+                <form method="post" action="{{ route('app.fornecedor.listar') }}">
+                    @csrf
+                    <input type="text" name="nome" placeholder="Nome" class="borda-preta">
+                    <input type="text" name="site" placeholder="Site" class="borda-preta">
+                    <input type="text" name="uf" placeholder="UF" class="borda-preta">
+                    <input type="text" name="email" placeholder="E-mail" class="borda-preta">
+                    <button type="submit" class="borda-preta">Pesquisar</button>
+                </form>
+            </div>
+        </div>
 
-                @case('95')
-                Boa Vista - RR
-                @break    
+    </div>
 
-                @default
-                Estado não informado
-            
-            @endswitch <br/>
-               @if ($loop->first)
-                PRIMEIRA iteração do loop
-            @endif
-            @if ($loop->last)
-                ÚLTIMA iteração do loop <br/><br/>
-                Total de Registros: {{$loop->count}}
-            @endif
-            <hr/> 
-    @empty
-        Não Existem fornecedores cadastrados.  
-    @endforelse
-    
-
-
-
-    <!-- VALOR DEFAULT (??)
-    Se a variável testada não estiver definida 
-    ou
-    Se a variável testada possuir o valor null
-    -->
-    
-@endisset
 @endsection
-
-
-
-  

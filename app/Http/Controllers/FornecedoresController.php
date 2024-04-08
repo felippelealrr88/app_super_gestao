@@ -3,31 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Fornecedor;
 
 class FornecedoresController extends Controller
 {
-    public function index(){
-        $fornecedores = [
-            0 =>['nome'=>'Casa do Pão de Queijo',
-            'status'=>'ativo',
-            'cnpj'=>'61.851.929/0001-19',
-            'ddd'=>'11',
-            'telefone'=>'99150-2221'],
+    public function index() {
+        return view('app.fornecedor.index');
+    }
 
-            1 =>['nome'=>'Casa do Camarão',
-            'status'=>'ativo',
-            'cnpj'=>'22.441.389/0001-43',
-            'ddd'=>'95',
-            'telefone'=>'3623-5294'],
+    public function listar() {
+        return view('app.fornecedor.listar');
+    }
 
-            2 =>['nome'=>'Massas e Panquecas',
-            'status'=>'ativo',
-            'cnpj'=>' 09.087.447/0002-03',
-            'ddd'=>'98',
-            'telefone'=>'3224-6969']
-        ];
+    public function adicionar(Request $request) {
 
-       // $fornecedores = [];
-            return view('app.fornecedor.index', compact('fornecedores'));
+        $msg = '';
+
+        //Validação do token
+        if($request->input('_token') != '') {
+            //Se o token é válido
+            $regras = [
+                'nome' => 'required|min:3|max:40',
+                'site' => 'required',
+                'uf' => 'required|min:2|max:2',
+                'email' => 'email'
+            ];
+
+        //Mensagens de Feedback
+            $feedback = [
+                'required' => 'O campo :attribute deve ser preenchido!',
+                'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres!',
+                'nome.max' => 'O campo nome deve ter no máximo 40 caracteres!',
+                'uf.min' => 'O campo uf deve ter no mínimo 2 caracteres!',
+                'uf.max' => 'O campo uf deve ter no máximo 2 caracteres!',
+                'email.email' => 'O campo e-mail não foi preenchido corretamente!'
+            ];
+            
+            //Realiza a validação com Resquest
+            $request->validate($regras, $feedback);
+
+            //Instancia um fornecedor
+            $fornecedor = new Fornecedor();
+            //Insere os dados no banco
+            $fornecedor->create($request->all());
+
+            //redirect
+
+            //dados view
+            $msg = 'Cadastro realizado com sucesso';
+        }
+        return view('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 }
