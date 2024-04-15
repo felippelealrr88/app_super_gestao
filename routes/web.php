@@ -36,6 +36,7 @@ Route::middleware('log.acesso', 'autenticacao')
 
     //Fornecedores
 Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
+Route::get('/fornecedor/listar', 'FornecedoresController@listar')->name('app.fornecedor.listar');
 Route::post('/fornecedor/listar', 'FornecedoresController@listar')->name('app.fornecedor.listar');
 Route::get('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
 Route::post('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
