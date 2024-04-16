@@ -20,7 +20,7 @@ class FornecedoresController extends Controller
         ->where('site', 'like', '%' .$request->input('site').'%')
         ->where('uf', 'like', '%' .$request->input('uf').'%')
         ->where('email', 'like', '%' .$request->input('email').'%')
-        ->paginate(5);
+        ->paginate(9);
         
         return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
@@ -93,5 +93,13 @@ class FornecedoresController extends Controller
         
 
         return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg'=>$msg]);
+    }
+
+    public function excluir($id){
+        //Pesquisa o fornecedor pelo id e faz a exclusão
+        Fornecedor::find($id)->delete();
+        
+
+        return redirect()->route('app.fornecedor');
     }
 }

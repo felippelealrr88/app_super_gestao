@@ -12,7 +12,7 @@ Route::fallback(function(){
     echo 'Página não encontrada. Clique <a href="'.route('site.index').'">aqui</a> para voltar ao início'; 
 });
 
-// rota principal do site
+//ROTA PRINCIPAL DO SITE
 Route::get('/principal', 'PrincipalController@principal')->name('site.index')
 ->middleware('log.acesso');
 
@@ -21,11 +21,11 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 
-//Rotas de Login ==========================================================================
+//ROTAS DE LOGIN ==========================================================================
 Route::get('/login/{erro?}', 'LoginController@login')->name('site.login');
 Route::post('/login', 'LoginController@autenticar')->name('site.login');
 
-//Agrupamento de rotas app ===========================================================
+//ROTAS DO SITE ===========================================================
 //Encadeamento de Middlewares pelo apelido
 Route::middleware('log.acesso', 'autenticacao')
     ->prefix('/app')->group(function(){
@@ -34,13 +34,17 @@ Route::middleware('log.acesso', 'autenticacao')
     Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
     Route::get('/produto', 'ProdutosController@index')->name('app.produto');
 
-    //Fornecedores
+//ROTAS DE FORNECEDOR
 Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
+
 Route::get('/fornecedor/listar', 'FornecedoresController@listar')->name('app.fornecedor.listar');
 Route::post('/fornecedor/listar', 'FornecedoresController@listar')->name('app.fornecedor.listar');
+
 Route::get('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
 Route::post('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('app.fornecedor.adicionar');
+
 Route::get('/fornecedor/editar/{id}/{msg?}', 'FornecedoresController@editar')->name('app.fornecedor.editar');
+Route::get('/fornecedor/excluir/{id}/{msg?}', 'FornecedoresController@excluir')->name('app.fornecedor.excluir');
 
 });
 
