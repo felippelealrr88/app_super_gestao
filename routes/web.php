@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
 //Se a rota não existir
 Route::fallback(function(){
     echo 'Página não encontrada. Clique <a href="'.route('site.index').'">aqui</a> para voltar ao início'; 
@@ -32,7 +33,7 @@ Route::middleware('log.acesso', 'autenticacao')
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/sair', 'LoginController@sair')->name('app.sair');
     Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
-    Route::get('/produto', 'ProdutosController@index')->name('app.produto');
+    Route::get('/produto', 'ProdutoController@index')->name('app.produto');
 
 //ROTAS DE FORNECEDOR
 Route::get('/fornecedor', 'FornecedoresController@index')->name('app.fornecedor');
@@ -46,12 +47,24 @@ Route::post('/fornecedor/adicionar', 'FornecedoresController@adicionar')->name('
 Route::get('/fornecedor/editar/{id}/{msg?}', 'FornecedoresController@editar')->name('app.fornecedor.editar');
 Route::get('/fornecedor/excluir/{id}/{msg?}', 'FornecedoresController@excluir')->name('app.fornecedor.excluir');
 
+//ROTAS DE PRODUTO
+//Usando os recursos do Laravel para rotas
+Route::resource('produto', 'ProdutoController');
+
+/* Resultado do comando php artisan route:list
+
+| Domain | Method    | URI                                | Name                     | Action                                                | Middleware   |
+|        | POST      | app/produto                        | produto.store            | App\Http\Controllers\ProdutoController@store          | web          |
+|        | GET|HEAD  | app/produto                        | produto.index            | App\Http\Controllers\ProdutoController@index          | web          |
+|        | GET|HEAD  | app/produto/create                 | produto.create           | App\Http\Controllers\ProdutoController@create         | web          |
+|        | PUT|PATCH | app/produto/{produto}              | produto.update           | App\Http\Controllers\ProdutoController@update         | web          |
+|        | GET|HEAD  | app/produto/{produto}              | produto.show             | App\Http\Controllers\ProdutoController@show           | web          |
+|        | DELETE    | app/produto/{produto}              | produto.destroy          | App\Http\Controllers\ProdutoController@destroy        | web          |
+|        | GET|HEAD  | app/produto/{produto}/edit         | produto.edit             | App\Http\Controllers\ProdutoController@edit           | web          |
+
+*/
+
 });
-
-
-
-
-
 
 
 /*
