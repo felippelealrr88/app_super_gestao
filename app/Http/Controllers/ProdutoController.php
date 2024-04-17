@@ -29,7 +29,14 @@ class ProdutoController extends Controller
     
     public function store(Request $request)
     {
-        //
+        //Validação dos campos
+        //Mensagens de feedback
+    
+        //Inlusão dos campos
+        $produtos = Produto::create($request->all());
+
+        return redirect()->route('produto.index');
+
     }
 
     
