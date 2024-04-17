@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Produto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        return view('app.produto.index');
+        // realiza uma consulta ao banco de dados
+        $produtos = Produto::paginate(9);
+        
+        return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
     
