@@ -34,7 +34,7 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:40',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'unidade_id' => 'exists:unidades,id'
+            'unidade_id' => 'required|exists:unidades,id'
         ];
 
         //Mensagens de Feedback
@@ -45,7 +45,9 @@ class ProdutoController extends Controller
             'descricao.min' => 'O campo nome deve ter no mínimo 3 caracteres! ',
             'descricao.max' => 'O campo nome deve ter no máximo 2000 caracteres! ',
             'peso.integer' => 'O campo nome deve ser um número inteiro! ',
-            'unidade_id.exists' => 'A unidade de medida informada não existe! ',
+            'unidade_id.exists' => 'Selecione uma unidade de medida válida! ',
+            'unidade_id.required' => 'Selecione uma unidade de medida válida! ',
+
         ];
         
         //Realiza a validação com Resquest

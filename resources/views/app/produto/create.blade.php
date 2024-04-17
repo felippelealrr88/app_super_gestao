@@ -31,12 +31,13 @@
                     {{ $errors->has('peso') ? $errors->first('peso') : ''}}
 
                     <select name="unidade_id" class="borda-preta">
-                        <option>-- Selecione a Unidade de Medida --</option>
-
+                        <option value="">-- Selecione a Unidade de Medida --</option> <!-- Opção padrão vazia -->
                         @foreach ($unidades as $unidade)
-                            <option value="{{ $unidade->id }}" {{ old('unidade_id') == $unidade->id ? 'selected' : ''}}>{{ $unidade->descricao }}</option>
+                            <option value="{{ $unidade->id }}" {{ old('unidade_id') == $unidade->id ? 'selected' : '' }}>{{ $unidade->descricao }}</option>
                         @endforeach
                     </select>
+
+
                     
                     <button type="submit" class="borda-preta">Cadastrar</button>
                 </form>
