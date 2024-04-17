@@ -30,7 +30,27 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         //Validação dos campos
-        //Mensagens de feedback
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+            'descricao' => 'required|min:3|max:2000',
+            'peso' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id'
+        ];
+
+        //Mensagens de Feedback
+        $feedback = [
+            'required' => 'O campo :attribute deve ser preenchido! ',
+            'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres! ',
+            'nome.max' => 'O campo nome deve ter no máximo 40 caracteres! ',
+            'descricao.min' => 'O campo nome deve ter no mínimo 3 caracteres! ',
+            'descricao.max' => 'O campo nome deve ter no máximo 2000 caracteres! ',
+            'peso.integer' => 'O campo nome deve ser um número inteiro! ',
+            'unidade_id.exists' => 'A unidade de medida informada não existe! ',
+        ];
+        
+        //Realiza a validação com Resquest
+        $request->validate($regras, $feedback);
+
     
         //Inlusão dos campos
         $produtos = Produto::create($request->all());
