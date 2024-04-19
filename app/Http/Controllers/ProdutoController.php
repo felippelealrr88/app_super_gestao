@@ -62,15 +62,16 @@ class ProdutoController extends Controller
     }
 
     
-    public function show($id)
+    public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     
-    public function edit($id)
+    public function edit(Produto $produto)
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades ]);
     }
 
     
