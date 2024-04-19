@@ -84,8 +84,11 @@ class ProdutoController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy(Produto $produto)
     {
-        //
+        //Exclui o objeto recebido pelo id informado
+        $produto->delete();
+        return redirect()->route('produto.index');
+        
     }
 }

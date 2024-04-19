@@ -71,6 +71,6 @@ class LoginController extends Controller
     public function sair(){
         session_destroy();
         //Retorna a variável título dinâmica usada na página
-        return view('site.login', ['titulo' => 'Login']);
+        return redirect()->route('site.login', ['titulo' => 'Login']);
     }
 }
