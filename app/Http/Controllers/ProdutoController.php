@@ -75,9 +75,12 @@ class ProdutoController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, Produto $produto)
     {
-        //
+        //Os dados da requisição vão atualizar os dados do banco
+        $produto->update($request->all());
+
+        return redirect()->route('produto.index');
     }
 
     
