@@ -50,19 +50,8 @@ Route::get('/fornecedor/excluir/{id}/{msg?}', 'FornecedoresController@excluir')-
 //ROTAS DE PRODUTO
 //Usando os recursos do Laravel para rotas
 Route::resource('produto', 'ProdutoController');
+Route::resource('produto-detalhe', 'ProdutoDetalheController');
 
-/* Resultado do comando php artisan route:list
-
-| Domain | Method    | URI                                | Name                     | Action                                                | Middleware   |
-|        | POST      | app/produto                        | produto.store            | App\Http\Controllers\ProdutoController@store          | web          |
-|        | GET|HEAD  | app/produto                        | produto.index            | App\Http\Controllers\ProdutoController@index          | web          |
-|        | GET|HEAD  | app/produto/create                 | produto.create           | App\Http\Controllers\ProdutoController@create         | web          |
-|        | PUT|PATCH | app/produto/{produto}              | produto.update           | App\Http\Controllers\ProdutoController@update         | web          |
-|        | GET|HEAD  | app/produto/{produto}              | produto.show             | App\Http\Controllers\ProdutoController@show           | web          |
-|        | DELETE    | app/produto/{produto}              | produto.destroy          | App\Http\Controllers\ProdutoController@destroy        | web          |
-|        | GET|HEAD  | app/produto/{produto}/edit         | produto.edit             | App\Http\Controllers\ProdutoController@edit           | web          |
-
-*/
 
 });
 
