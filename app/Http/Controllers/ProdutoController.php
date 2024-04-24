@@ -11,6 +11,8 @@ class ProdutoController extends Controller
     
     public function index(Request $request)
     {
+    
+
         // realiza uma consulta ao banco de dados
         $produtos = Produto::paginate(9);
         
@@ -64,6 +66,7 @@ class ProdutoController extends Controller
     
     public function show(Produto $produto)
     {
+        
         return view('app.produto.show', ['produto' => $produto]);
     }
 
@@ -72,9 +75,9 @@ class ProdutoController extends Controller
     {
         //Recupera as unidades para poder exibir no options na view
         $unidades = Unidade::all();
-        
-        //return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades ]);
-        return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades ]);
+
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades ]);
+        //return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades ]);
 
     }
 
