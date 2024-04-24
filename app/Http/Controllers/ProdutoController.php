@@ -70,8 +70,12 @@ class ProdutoController extends Controller
     
     public function edit(Produto $produto)
     {
+        //Recupera as unidades para poder exibir no options na view
         $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades ]);
+        
+        //return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades ]);
+        return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades ]);
+
     }
 
     
