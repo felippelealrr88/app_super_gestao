@@ -11,8 +11,6 @@ class ProdutoController extends Controller
     
     public function index(Request $request)
     {
-    
-
         // realiza uma consulta ao banco de dados
         $produtos = Produto::paginate(9);
         

@@ -11,6 +11,15 @@ class Produto extends Model
     
     //Permissão para inserir dados no Objeto usando Tinker
     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+
+    //Função que cria o relacionamento 1x1 com produto_detalhes no banco
+    public function produtoDetalhe()
+    {
+        //Produto tem um ProdutoDetalhe
+        return $this->hasOne('App\ProdutoDetalhe');
+        //Aponta para o Model ProdutoDetalhe
+        //Faz uma busca na tabela produto_detalhes por uma chave correspondente com a pk de produtos (fk em produto_detalhes)
+    }
 }
 
 /*Model serve para fazer o mapeamento Objeto Relacional
