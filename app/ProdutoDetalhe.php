@@ -11,6 +11,14 @@ class ProdutoDetalhe extends Model
     
    //Permissão para inserir dados no Objeto usando Tinker
    protected $fillable = ['produto_id', 'comprimento', 'largura', 'altura', 'unidade_id'];
+
+   public function produto()
+   {
+      //Produto pertence a ProdutoDetalhes
+      return $this->belongsTo('App\Produto');
+      //Aponta para o Model Produto
+      
+   }
 }
 
 /*Model serve para fazer o mapeamento Objeto Relacional
