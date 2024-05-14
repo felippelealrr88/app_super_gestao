@@ -10,6 +10,14 @@ class Fornecedor extends Model
     protected $table = 'fornecedores';
     //Permissão para inserir dados no Objeto usando Tinker
     protected $fillable = ['nome', 'site', 'uf', 'email'];
+
+    public function produtos(){
+        // Relacionamento de Fornecedor com Produtos
+        //Tabela da relação, fk e pk
+        return $this->hasMany('App\Produto', 'fornecedor_id', 'id');
+    }
+
+
 }
 
 /*Model serve para fazer o mapeamento Objeto Relacional
