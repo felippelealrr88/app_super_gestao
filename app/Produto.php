@@ -15,10 +15,20 @@ class Produto extends Model
     //Função que cria o relacionamento 1x1 com produto_detalhes no banco
     public function produtoDetalhe()
     {
-        //Produto tem um ProdutoDetalhe
+        //Classe Produto() tem um ProdutoDetalhe
         return $this->hasOne('App\ProdutoDetalhe');
         //Aponta para o Model ProdutoDetalhe
         //Faz uma busca na tabela produto_detalhes por uma chave correspondente com a pk de produtos (fk em produto_detalhes)
+    }
+
+    //Classe Produto() tem um fornecedor
+    public function fornecedor(){
+        return $this->belongsTo('App\Fornecedor');
+    }
+
+    //Classe Produto() tem um fornecedor
+    public function unidade(){
+        return $this->belongsTo('App\Unidade');
     }
 }
 
