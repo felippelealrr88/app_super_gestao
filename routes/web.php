@@ -32,7 +32,7 @@ Route::middleware('log.acesso', 'autenticacao')
     ->prefix('/app')->group(function(){
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/sair', 'LoginController@sair')->name('app.sair');
-    Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
+    //Route::get('/cliente', 'ClientesController@index')->name('app.cliente');
     Route::get('/produto', 'ProdutoController@index')->name('app.produto');
 
 //ROTAS DE FORNECEDOR
@@ -52,6 +52,11 @@ Route::get('/fornecedor/excluir/{id}/{msg?}', 'FornecedoresController@excluir')-
 Route::resource('produto', 'ProdutoController');
 Route::resource('produto-detalhe', 'ProdutoDetalheController');
 
+//Rotas de Cliente
+
+Route::resource('cliente', 'ClientesController');
+Route::resource('pedido', 'PedidoController');
+Route::resource('pedido-produto', 'PedidoProdutoController');
 
 });
 
