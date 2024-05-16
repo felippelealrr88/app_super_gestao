@@ -10,7 +10,7 @@ class Produto extends Model
     protected $table = 'produtos';
     
     //Permissão para inserir dados no Objeto usando Tinker
-    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id', 'fornecedor_id'];
 
     //Função que cria o relacionamento 1x1 com produto_detalhes no banco
     public function produtoDetalhe()
